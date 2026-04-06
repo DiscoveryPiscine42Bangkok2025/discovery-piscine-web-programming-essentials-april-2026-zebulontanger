@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Balloon - All-in-One</title>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+
+        #balloon {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            cursor: pointer;
+            /* Smooths out the growth and color shifts */
+            transition: width 0.1s ease-out, height 0.1s ease-out, background-color 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="balloon"></div>
+
+    <script>
+        $(document).ready(function() {
+            let size = 200;
+            const colors = ['red', 'green', 'blue'];
+            let colorIndex = 0;
+
+            const $balloon = $('#balloon');
+
+            // 1. Inflate on Click
+            $balloon.on('click', function() {
+                size += 10;
+                
+                // Reset if it "pops"
+                if (size > 420) {
+                    size = 200;
+                }
+                
+                colorIndex = (colorIndex + 1) % colors.length;
+                updateBalloon();
+            });
+
+            // 2. Deflate on Mouse Leave
+            $balloon.on('mouseleave', function() {
+                size = Math.max(200, size - 5);
+                
+                // Cycle color backward
+                colorIndex = (colorIndex + (colors.length - 1)) % colors.length;
+                updateBalloon();
+            });
+
+            // Reusable update function
+            function updateBalloon() {
+                $balloon.css({
+                    'width': size + 'px',
+                    'height': size + 'px',
+                    'background-color': colors[colorIndex]
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
