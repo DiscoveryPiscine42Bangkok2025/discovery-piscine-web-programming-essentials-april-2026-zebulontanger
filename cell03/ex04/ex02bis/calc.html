@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        input, select, button { margin-bottom: 10px; padding: 5px; }
+    </style>
+</head>
+<body>
 
+    <label for="number1">First number:</label>
+    <input type="text" id="number1"><br>
+
+    <label for="operator">Choose an operator</label>
+    <select id="operator">
+        <option value="add">+</option>
+        <option value="minus">-</option>
+        <option value="multiply">*</option>
+        <option value="divide">/</option>
+        <option value="remainder">%</option>
+    </select><br>
+
+    <label for="number2">Second number:</label>
+    <input type="text" id="number2"><br>
+
+    <button id="calcBtn">Try me!</button>
+
+    <script>
+        $(document).ready(function() {
+            
+            $('#calcBtn').on('click', function() {
+                const val1 = $('#number1').val();
+                const val2 = $('#number2').val();
+                const op = $('#operator').val();
+
+                const left = Number(val1);
+                const right = Number(val2);
+
+                if (val1 === "" || val2 === "" || isNaN(left) || isNaN(right) || left < 0 || right < 0) {
+                    alert("Error :(");
+                    return;
+                }
+
+                if ((op === "divide" || op === "remainder") && right === 0) {
+                    alert("It's over 9000!");
+                    return;
+                }
+
+                let result;
+                switch (op) {
+                    case "add":      result = left + right; break;
+                    case "minus":    result = left - right; break;
+                    case "multiply": result = left * right; break;
+                    case "divide":   result = left / right; break;
+                    case "remainder": result = left % right; break;
+                }
+
+                alert("Result: " + result);
+                console.log("Result:", result);
+            });
+
+            setTimeout(function() {
+                alert("Please, use me...");
+            }, 30000);
+            
+        });
+    </script>
+</body>
+</html>
