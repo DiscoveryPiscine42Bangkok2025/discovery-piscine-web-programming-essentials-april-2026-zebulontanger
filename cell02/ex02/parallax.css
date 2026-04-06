@@ -1,0 +1,24 @@
+body, html {
+    height: 80%;
+}
+
+.parallax {
+    height: 80%; 
+
+    background-image: url('https://cdn.imgchest.com/files/ca6c56f23147.jpeg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.parallax2 {
+    height: 80%; 
+
+    background-image: url('https://cdn.imgchest.com/files/150f362be341.png');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
