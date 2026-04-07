@@ -4,88 +4,118 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="profile.css">
-  <link rel="stylesheet" href="nav.css">
-  <title>tkunariy</title>
+  <link rel="stylesheet" href="style.css">
+  <title>Portfolio - Lamtan</title>
 </head>
 <body>
 
-<nav class="fabnav">
-  <div class="navbar" id="navbar">
-    <div class="navtrigger" onclick="toggleNav()">
-      <img src="https://cdn.imgchest.com/files/d405be82fa44.png" alt="Icon" id="nav-icon">
-    </div>
-    <div class="navmenu">
-      <a href="final.html" class="navitem">Home</a>
-      <a href="lamtan.html" class="navitem">Lamtan</a> <!-- the nav links are here buddy -->
-      <a href="baan.html" class="navitem">Baan</a>
-    </div>
-  </div>
-</nav>
-
-<div class="wrap">
-  <img src="https://cdn.imgchest.com/files/5b95f8070fc9.jpg" alt="PFP" class="pfp">
-  <h1 class="name">tkunariy</h1>
-  <p class="realname">(Teerath Kunariyasup)</p>
-
-  <div class="bio">
-    <div class="body">
-      <h2 class="title">About Me</h2>
-      <p>Discord Community Manager &<br>Student at Satit Prasarnmit</p>
-    </div>
-  </div>
-
-  <div class="tabs">
-    <span class="tab active" onclick="switchTab('card2', this)">Education</span>
-    <span class="tab" onclick="switchTab('card3', this)">Placeholder</span>
-    <span class="tab" onclick="switchTab('card4', this)">Socials</span>
-    <span class="tab" onclick="switchTab('card5', this)">Other</span>
-  </div>
-
-  <div class="view">
-    <div id="card2" class="box pane">
-      <div class="body">
-        <h2 class="title">Currently Studying at...</h2>
-        <p>Satit Prasarnmit (Secondary)<br>Grade 11 (M.5)<br>Computer Engineering (CE)</p>
+  <nav class="fabnav fade">
+    <div class="navbar" id="navbar">
+      <div class="navtrigger" onclick="toggleNav()">
+        <img src="https://cdn.imgchest.com/files/d405be82fa44.png" alt="Icon" id="nav-icon">
+      </div>
+      <div class="navmenu">
+        <div class="navitem"><a href="final.html">Home</a></div>
+        <div class="navitem">
+          <a href="profile.html">Lamtan</a>
+          <div class="dropdown-content">
+            <a href="javascript:void(0)" class="drop-item" onclick="scrollToSection('card2')">Education</a>
+            <a href="javascript:void(0)" class="drop-item" onclick="scrollToSection('card3')">Showcase</a>
+            <a href="javascript:void(0)" class="drop-item" onclick="scrollToSection('card4')">Socials</a>
+            <a href="javascript:void(0)" class="drop-item" onclick="scrollToSection('card5')">Experience</a>
+          </div>
+        </div>
+        <div class="navitem"><a href="Baan.html">Baan</a></div>
       </div>
     </div>
+  </nav>
 
-    <div id="card3" class="box pane" style="display: none;">
-      <div class="body">
-        <h2 class="title">Placeholderrrr</h2>
-        <p>im a larper bro</p>
-      </div>
-    </div>
+  <div class="wrap">
+    <img src="https://cdn.imgchest.com/files/3be6d78906f4.png" alt="PFP" class="pfp fade">
+    <h1 class="name fade">tkunariy</h1>
+    <p class="realname fade">(Teerath Kunariyasup)</p>
 
-    <div id="card4" class="box pane" style="display: none;">
+    <div class="bio fade box">
       <div class="body">
-        <h2 class="title">Socials</h2>
-        <div class="socs">
-          <a href="#"><i class="fab fa-discord"></i> playerv2</a>
-          <a href="#"><i class="fab fa-instagram"></i> theplayerv2</a>
-          <a href="#"><i class="fab fa-spotify"></i> theplayerv2</a>
-          <a href="#"><i class="fab fa-tiktok"></i> theplayerver2</a>
+        <div class="sub-card">
+          <h2 class="title">About Me</h2>
+          <p>16 Years old, Discord Community Manager & Student at Satit Prasarnmit</p>
         </div>
       </div>
     </div>
 
-    <div id="card5" class="box pane" style="display: none;">
-      <div class="body">
-        <h2 class="title">Other</h2>
-        <p>durrrrrrrrrrrrrr</p>
+    <div class="view fade">
+      <div id="card2" class="box">
+        <div class="body">
+          <div class="sub-card">
+            <h2 class="title">Currently Studying at...</h2>
+            <p>Satit Prasarnmit Demonstration School (Secondary)<br>Grade 11 (M.5)<br>Computer Engineering (CE)</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="card3" class="box">
+        <div class="body">
+          <div class="sub-card">
+            <h2 class="title">Showcase</h2>
+            <p>Nothing bro, nothing at all.</p>
+          </div>
+        </div>
+      </div>
+
+      <div id="card4" class="box">
+        <div class="body">
+          <div class="sub-card">
+            <h2 class="title">Socials</h2>
+            <div class="socs">
+              <a href="https://discord.com/users/1089116888296071289" target="_blank"><i class="fab fa-discord"></i> playerv2</a>
+              <a href="https://guns.lol/theplayerv2" target="_blank"><i class="fas fa-crosshairs"></i> theplayerv2</a>
+              <a href="https://www.instagram.com/theplayerv2" target="_blank"><i class="fab fa-instagram"></i> theplayerv2</a>
+              <a href="https://open.spotify.com/user/31huluu2coqqczqcjdiupdrjvhxe?si=6CipHDzwRtyQtzRwauddwA" target="_blank"><i class="fab fa-spotify"></i> theplayerv2</a>
+              <a href="https://www.tiktok.com/@theplayerver2" target="_blank"><i class="fab fa-tiktok"></i> theplayerver2</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="card5" class="box">
+        <div class="body">
+          <div class="sub-card">
+            <h2 class="title">Experience</h2>
+            <p>Worked as a Moderator for a Discord server with over 20,000 members.<br>Currently working as Community Manager for a server with over 3,000 members.</p>
+          </div>
+          <div class="sub-card">
+            <h2 class="title">Familiar Bots</h2>
+            <div class="tag-container">
+              <span class="tag">Dyno</span>
+              <span class="tag">Arcane</span>
+              <span class="tag">Sapphire</span>
+              <span class="tag">Nocalty</span>
+              <span class="tag">Ticket Tool</span>
+              <span class="tag">Bloxlink</span>
+            </div>
+          </div>
+          <div class="sub-card">
+            <h2 class="title">Skills</h2>
+            <div class="tag-container">
+              <span class="tag">Communication</span>
+              <span class="tag">Leadership</span>
+              <span class="tag">Problem Solving</span>
+              <span class="tag">Discord Management</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="bg">
-  <video autoplay loop muted playsinline class="bgvideo">
-    <source src="https://cdn.imgchest.com/files/6ec6148396a8.mp4" type="video/mp4">
-  </video>
-  <div class="overlay"></div>
-</div>
+  <div class="bg">
+    <video autoplay loop muted playsinline class="bgvideo">
+      <source src="https://cdn.imgchest.com/files/6ec6148396a8.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+  </div>
 
-<script src="profile.js"></script>
-<script src="nav.js"></script>
+  <script src="profile.js"></script>
 </body>
 </html>
