@@ -1,7 +1,11 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     "liveServer.settings.port": 5501
 =======
     "liveServer.settings.port": 5504
 >>>>>>> b9d88f7 (yo twin hi)
+=======
+    "liveServer.settings.port": 5509
+>>>>>>> 7420f39 (Co-authored-by: Astreus <ThePlayerV2@users.noreply.github.com>)
 }

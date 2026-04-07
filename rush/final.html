@@ -1,0 +1,280 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>check out this peak portfolio twin</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #161616;
+            --accent-color: #ffffff;
+            --nav-glass: rgba(20, 20, 20, 0.85);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        .fabnav {
+            position: fixed;
+            top: 25px;
+            left: 25px;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            background: var(--nav-glass);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            width: 60px;
+            height: 60px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .navbar.active {
+            width: auto;
+            min-width: 280px;
+            padding-right: 25px;
+            border-radius: 20px;
+        }
+
+        .navtrigger {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .navtrigger img {
+            width: 30px;
+            height: 30px;
+            opacity: 0.9;
+            transition: transform 0.5s ease;
+        }
+
+        .navbar.active #nav-icon {
+            transform: rotate(90deg);
+        }
+
+        .navmenu {
+            display: flex;
+            gap: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .navbar.active .navmenu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .navitem {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            transition: all 0.3s ease;
+        }
+
+        .navitem:hover {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 3rem;
+            padding: 15vh 5% 8vh;
+        }
+
+        .profile-group {
+            flex: 1 1 320px;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-trigger {
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            margin: 0;
+        }
+
+        .profile-trigger img {
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .profile-trigger h2 {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .about-card {
+            display: none;
+            background-color: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 20px;
+            width: 100%;
+            text-align: center;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .about-card h3 {
+            color: var(--text-dim);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .about-card h1 {
+            margin: 0 0 10px 0;
+            font-size: 2rem;
+        }
+
+        .about-card p {
+            color: var(--text-dim);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .see-more-btn {
+            display: inline-block;
+            padding: 0.8rem 2.2rem;
+            background-color: #fff;
+            color: #000;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s ease;
+        }
+
+        .see-more-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @media (hover: hover) {
+            .profile-trigger:hover img {
+                transform: scale(1.05) translateY(-10px);
+                border-color: rgba(255,255,255,0.4);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar.active {
+                min-width: 200px;
+            }
+            .navmenu {
+                gap: 5px;
+            }
+            .navitem {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fabnav">
+        <div class="navbar" id="navbar">
+            <div class="navtrigger" onclick="toggleNav()">
+                <img src="https://cdn.imgchest.com/files/d405be82fa44.png" alt="Menu" id="nav-icon">
+            </div>
+            <div class="navmenu">
+                <a href="final.html" class="navitem">Home</a>
+                <a href="baan.html" class="navitem">Baan</a>
+                <a href="lamtan.html" class="navitem">Lamtan</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="image-container">
+        
+        <div class="profile-group" id="profile-Baan">
+            <figure class="profile-trigger">
+                <img src="https://cdn.imgchest.com/files/1037c59a8a04.jpeg" alt="Baan">
+                <h2>Baan's Profile</h2>
+            </figure>
+
+            <div class="about-card">
+                <h3>About</h3>
+                <h1>Baan</h1>
+                <p>Music Composer, Song Writer<br>Loves Cats, Sunfish and Bees</p>
+                <a href="baan.html" class="see-more-btn">See More</a>
+            </div>
+        </div>
+
+        <div class="profile-group" id="profile-Lamtan">
+            <figure class="profile-trigger">
+                <img src="https://cdn.imgchest.com/files/fe853a879629.jpeg" alt="Lamtan">
+                <h2>Lamtan's Profile</h2>
+            </figure>
+            
+            <div class="about-card">
+                <h3>About</h3>
+                <h1>Lamtan</h1>
+                <p>Discord Community Manager,<br>loves skibidi toilet</p>
+                <a href="lamtan.html" class="see-more-btn">See More</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleNav() {
+            const bar = document.getElementById('navbar');
+            bar.classList.toggle('active');
+        }
+
+        $(document).ready(function() {
+            $('.profile-trigger').on('click', function() {
+                const card = $(this).siblings('.about-card');
+                $('.about-card').not(card).slideUp(400);
+                card.stop().slideToggle(500);
+            });
+
+            $(document).on('click', function(e) {
+                const bar = $('#navbar');
+                if (!bar.is(e.target) && bar.has(e.target).length === 0) {
+                    bar.removeClass('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

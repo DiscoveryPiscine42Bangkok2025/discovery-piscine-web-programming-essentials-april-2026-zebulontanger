@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="profile.css">
+  <link rel="stylesheet" href="nav.css">
+  <title>tkunariy</title>
+</head>
+<body>
+
+<nav class="fabnav">
+  <div class="navbar" id="navbar">
+    <div class="navtrigger" onclick="toggleNav()">
+      <img src="https://cdn.imgchest.com/files/d405be82fa44.png" alt="Icon" id="nav-icon">
+    </div>
+    <div class="navmenu">
+      <a href="final.html" class="navitem">Home</a>
+      <a href="lamtan.html" class="navitem">Lamtan</a> <!-- the nav links are here buddy -->
+      <a href="baan.html" class="navitem">Baan</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <img src="https://cdn.imgchest.com/files/5b95f8070fc9.jpg" alt="PFP" class="pfp">
+  <h1 class="name">tkunariy</h1>
+  <p class="realname">(Teerath Kunariyasup)</p>
+
+  <div class="bio">
+    <div class="body">
+      <h2 class="title">About Me</h2>
+      <p>Discord Community Manager &<br>Student at Satit Prasarnmit</p>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <span class="tab active" onclick="switchTab('card2', this)">Education</span>
+    <span class="tab" onclick="switchTab('card3', this)">Placeholder</span>
+    <span class="tab" onclick="switchTab('card4', this)">Socials</span>
+    <span class="tab" onclick="switchTab('card5', this)">Other</span>
+  </div>
+
+  <div class="view">
+    <div id="card2" class="box pane">
+      <div class="body">
+        <h2 class="title">Currently Studying at...</h2>
+        <p>Satit Prasarnmit (Secondary)<br>Grade 11 (M.5)<br>Computer Engineering (CE)</p>
+      </div>
+    </div>
+
+    <div id="card3" class="box pane" style="display: none;">
+      <div class="body">
+        <h2 class="title">Placeholderrrr</h2>
+        <p>im a larper bro</p>
+      </div>
+    </div>
+
+    <div id="card4" class="box pane" style="display: none;">
+      <div class="body">
+        <h2 class="title">Socials</h2>
+        <div class="socs">
+          <a href="#"><i class="fab fa-discord"></i> playerv2</a>
+          <a href="#"><i class="fab fa-instagram"></i> theplayerv2</a>
+          <a href="#"><i class="fab fa-spotify"></i> theplayerv2</a>
+          <a href="#"><i class="fab fa-tiktok"></i> theplayerver2</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="card5" class="box pane" style="display: none;">
+      <div class="body">
+        <h2 class="title">Other</h2>
+        <p>durrrrrrrrrrrrrr</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bg">
+  <video autoplay loop muted playsinline class="bgvideo">
+    <source src="https://cdn.imgchest.com/files/6ec6148396a8.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+</div>
+
+<script src="profile.js"></script>
+<script src="nav.js"></script>
+</body>
+</html>
