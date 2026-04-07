@@ -1,1 +1,794 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>u on baan's profile</title>
 
+<style>
+:root {
+    --bg-top: #1e1e1e;
+    --bg-mid: #121212;
+    --bg-bottom: #000000; 
+    --card-bg: #161616;
+    --nav-glass: rgba(20, 20, 20, 0.95);
+    --accent-yellow: #ffff00;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    margin: 0;
+    background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bottom) 100%);
+    background-attachment: fixed;
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.navbar, .sub-navbar {
+    background-color: var(--nav-glass);
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 3px dashed #444;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    height: auto;
+    min-height: 110px;
+    padding: 10px 0;
+}
+
+.sub-navbar {
+    position: sticky;
+    top: 110px; 
+    height: auto;
+    min-height: 70px;
+    background-color: #111;
+    border-bottom: 2px solid #333;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    padding: 5px 0;
+}
+
+.word-soup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.soup-item {
+    position: absolute;
+    color: #666;
+    font-weight: 900;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-family: "Courier New", monospace;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    width: 90%;
+    position: relative;
+    z-index: 2;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-weight: 900;
+    font-size: 1.5rem;
+    text-decoration: underline;
+    font-family: "Courier New", monospace;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 8px;
+    background: #000;
+    border: 2px inset #666;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-links li a {
+    padding: 0.4rem 0.8rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 800;
+    border: 1px solid #333;
+    display: inline-block;
+}
+
+.nav-links li a.active {
+    background-color: var(--accent-yellow);
+    color: black !important; 
+}
+
+.main-profile-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+    padding: 180px 5%;
+    flex-wrap: wrap;
+    scroll-margin-top: 200px;
+}
+
+.showcase-container {
+    padding: 150px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    scroll-margin-top: 180px;
+}
+
+.contacts-section {
+    padding: 150px 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    scroll-margin-top: 180px;
+}
+
+.showcase-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    width: 95%;
+    max-width: 1400px;
+}
+
+.showcase-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    flex: 1;
+}
+
+.content-box {
+    min-height: 150px;
+    background: #1a1a1a;
+    padding: 2rem;
+    border: 2px solid #444;
+    box-shadow: 10px 10px 0px #000;
+    transition: background-color 0.5s ease, border-color 0.5s ease;
+    flex: 1;
+    max-width: 420px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.content-box h2 {
+    font-family: "Courier New", monospace;
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--accent-yellow);
+    display: inline-block;
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.content-box p {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #ccc;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.frame {
+    width: 400px; 
+    height: 400px;
+    max-width: 85vw;
+    max-height: 85vw;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #111;
+}
+
+.circular { border: 10px double #666; border-radius: 50%; }
+.square { border: 8px solid #fff; transform: rotate(2deg); transition: transform 0.3s; }
+
+.frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.music-player-container {
+    width: 90%;
+    text-align: center;
+}
+
+audio {
+    width: 100%;
+    filter: invert(100%) hue-rotate(180deg);
+}
+
+.nav-arrow {
+    background: #000;
+    color: #00ff00;
+    border: 4px outset #666;
+    font-size: 2.5rem;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    font-family: "Courier New", monospace;
+    font-weight: 900;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.nav-arrow:hover {
+    background: var(--accent-yellow);
+    color: #000;
+    transform: scale(1.15);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.contacts-section .content-box a {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: #ccc;
+    text-decoration: none;
+    display: block;
+    width: fit-content;
+    padding: 4px 10px;
+    margin: 8px 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    word-break: break-all;
+}
+
+.contacts-section .content-box a:hover {
+    background-color: var(--accent-yellow);
+    color: #000 !important;
+    font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+    .showcase-content { flex-direction: column; gap: 2rem; }
+    .frame { width: 320px; height: 320px; }
+}
+
+@media (max-width: 768px) {
+    .navbar { position: relative; height: auto; }
+    .sub-navbar { top: 0; position: sticky; }
+    .word-soup { display: none; }
+    .frame { width: 280px; height: 280px; }
+    .showcase-wrapper { flex-wrap: wrap; justify-content: center; }
+    .nav-arrow { order: 2; padding: 1rem 1.5rem; font-size: 2rem; }
+    .showcase-content { order: 1; width: 100%; }
+}
+</style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="word-soup" id="soup-container"></div>
+        <div class="nav-container">
+            <a href="baan.html" class="logo" id="main-logo">BAAN's Portfolio</a>
+            <ul class="nav-links" id="nav-list">
+                <li><a href="final.html">Home</a></li>
+                <li><a href="baan.html" class="active">Baan</a></li>
+                <li><a href="lamtan.html">Lamtan</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <nav class="sub-navbar">
+        <div class="nav-container">
+            <span class="logo" style="text-decoration: none; border-bottom: 2px solid white; font-size: 1rem;">Jump To:</span>
+            <ul class="nav-links" id="sub-nav-list">
+                <li><a href="#who-section">About</a></li>
+                <li><a href="#showcase-section">Achievements</a></li>
+                <li><a href="#contact-section">Socials</a></li>
+                <li><a href="#music-showcase-section">Music Showcase</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-profile-content" id="who-section">
+        <section class="content-box">
+            <h2>Who?</h2>
+            <p>- I'm Baan (Suvarnabhumi Suwansaengrot)<br>
+                - Formally known as Delta Tanger online<br>
+                - I enjoy spending time writing songs and composing music
+            </p>
+        </section>
+
+        <div class="frame circular">
+            <img id="dynamic-img-1" src="https://cdn.imgchest.com/files/c1141d308f89.webp" alt="Profile Visual">
+        </div>
+
+        <section class="content-box">
+            <h2>Facts</h2>
+            <p>
+                School: Prasarnmit Demonstration School, SWU<br>
+                Likes: Purple, Cats, Bees, Sunfish<br>
+                Dislikes: Pomeranians
+            </p>
+        </section>
+    </main>
+
+    <div class="showcase-container" id="showcase-section">
+        <div class="showcase-wrapper">
+            <button class="nav-arrow" id="prev-btn"><</button>
+            <section class="showcase-content" id="showcase-area">
+                <div class="content-box">
+                    <h2 id="showcase-title-left">Work</h2>
+                    <p id="showcase-text-left">Loading...</p>
+                </div>
+                <div class="frame square">
+                    <img id="dynamic-img-2" src="" alt="Showcase Visual">
+                </div>
+                <div class="content-box">
+                    <h2 id="showcase-title-right">Goal</h2>
+                    <p id="showcase-text-right">Loading...</p>
+                </div>
+            </section>
+            <button class="nav-arrow" id="next-btn">></button>
+        </div>
+        <div id="counter" style="margin-top: 30px; font-family: 'Courier New', monospace; font-size: 1.5rem; font-weight: 900;">1 / 3</div>
+    </div>
+
+    <section class="contacts-section" id="contact-section">
+        <div class="contact-grid">
+            <div class="content-box">
+                <h2>Socials</h2>
+                <a href="https://www.instagram.com/delta_tetrax/?hl=en" target="_blank">Instagram: delta_tetrax</a>
+                <a href="https://discord.com/users/1368368355597221900" target="_blank">Discord: deltaxsomethinghere</a>
+                <a href="https://www.tiktok.com/@hellboundjr?_r=1&_t=ZS-95KTOkbjqlx" target="_blank">TikTok: hellboundjr</a>
+            </div>
+            <div class="content-box">
+                <h2>Inquiries</h2>
+                <p>Email: deltatangerjr@gmail.com<br>
+                   zebulontanger@gmail.com
+                </p>
+            </div>
+            <div class="content-box">
+                <h2>Music Links</h2>
+                <a href="https://flat.io/@delta_tanger" target="_blank">Flat: delta_tanger</a>
+                <a href="https://open.spotify.com/user/315jxi3ng6xagn6fdz7ejymq2gha?si=z1wBkpD3RBWFzhh9_FU0gA" target="_blank">Spotify: Delta Tanger Junior</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="showcase-container" id="music-showcase-section" style="background: rgba(20, 0, 40, 0.4);">
+        <div class="showcase-wrapper">
+            <button class="nav-arrow" id="music-prev-btn"><</button>
+            <section class="showcase-content">
+                <div class="content-box">
+                    <h2 id="music-title-left">Track Name</h2>
+                    <p id="music-text-left">Loading...</p>
+                </div>
+                
+                <div class="frame square" id="music-frame">
+                    <div class="music-player-container">
+                        <p style="font-family: monospace; font-size: 0.8rem; margin-bottom: 10px;">PLAYING MP3...</p>
+                        <audio id="music-player" controls>
+                            <source src="" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h2 id="music-title-right">Mood</h2>
+                    <p id="music-text-right">Loading...</p>
+                </div>
+            </section>
+            <button class="nav-arrow" id="music-next-btn">></button>
+        </div>
+        <div id="music-counter" style="margin-top: 30px; font-family: 'Courier New', monospace; font-size: 1.5rem; font-weight: 900;">1 / 3</div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+
+    const showcaseData = [
+        { leftTitle: "Music", leftText: "I'm trying to convey my songs with emotion, hopefully people don't relate to them.", rightTitle: "Goal", rightText: "To create music that can help people through their toughest times (or make it worse)", url: "https://picsum.photos/seed/work/800/800" },
+        { leftTitle: "2nd Achievement", leftText: "I still don't have one", rightTitle: "Random Text", rightText: "each and everyday hiding from the sunshine", url: "https://cdn.imgchest.com/files/4dcf8d154095.jpeg" },
+        { leftTitle: "3rd Achievement", leftText: "I still don't have one", rightTitle: "Random Text", rightText: "what if i put random text here like who'll know", url: "https://cdn.imgchest.com/files/4dcf8d154095.jpeg" }
+    ];
+
+    const musicData = [
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Scripted Stage", 
+            rightTitle: "Description", 
+            rightText: "A song about a relationship that has fallen apart from distrust. Written: 16 March 2025", 
+            songUrl: "scriptedstage.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Falling For You - Paper Series", 
+            rightTitle: "Description", 
+            rightText: "This was a song I made for my girlfriend. Written: 16 Janurary 2024", 
+            songUrl: "fallingforyou.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "I Forgot That You Exist - Paper Series", 
+            rightTitle: "Description", 
+            rightText: "To someone who stalked me even after I blocked them on all my social medias. Written: 23 April 2024", 
+            songUrl: "iftye.mp3" 
+        },
+        { 
+            leftTitle: "Song Name",
+            leftText: "Another Mistake - Paper Series", 
+            rightTitle: "Description", 
+            rightText: "Sometimes we all regret our own actions, what could've been different. Written: 31 May 2024", 
+            songUrl: "anothermistake.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Bitter and Blunt - Paper Series", 
+            rightTitle: "Description", 
+            rightText: "Sometimes, people are better off staying as just friends. Written: 21 June 2024", 
+            songUrl: "bitterandblunt.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Paper Fever - Paper Series", 
+            rightTitle: "Description", 
+            rightText: "I'm not that good at apologizing, so please, have this as a final gift to you. Written: 5 July 2024", 
+            songUrl: "paperfever.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Dandelion - Paper Series", 
+            rightTitle: "Description", 
+            rightText: "A final tribute to all my of my childhood friends. Written: 22 August 2024", 
+            songUrl: "dandelion.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "ANTIHUMAN - LOST SIGNAL Series", 
+            rightTitle: "Description", 
+            rightText: "The first song of the series that started a year long and ongoing comic. Please do not take the medicines. Written: 1 January 2025", 
+            songUrl: "antihuman.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Cybernetic Heart - LOST SINGAL Series", 
+            rightTitle: "Description", 
+            rightText: "The damage has been done. There's no going back from here, Moka. Wrtitten: 1 February 2025", 
+            songUrl: "cyberneticheart.mp3"
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "ANTIVILLAIN - LOST SIGNAL Series", 
+            rightTitle: "Description", 
+            rightText: "You don't have to be so afraid, dear. Just let me show you a brand new world... Written: 1 March 2025", 
+            songUrl: "antivillain.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "DATA_REJECT - LOST SIGNAL Series", 
+            rightTitle: "Description", 
+            rightText: "The last existence of Vanilla Milkshake. Written: 1 April 2025", 
+            songUrl: "datareject.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "HYPNOFREAK - LOST SIGNAL Series", 
+            rightTitle: "Description", 
+            rightText: "Oh, Moka... Can't you see the brand new me? Written: 1 May 2025", 
+            songUrl: "hypnofreak.mp3" 
+        },
+            { 
+            leftTitle: "Song Name", 
+            leftText: "THE RINGMASTER - LOST SIGNAL Series", 
+            rightTitle: "Description", 
+            rightText: "Thank you for your hard work. We'll see you in the afterlife. Written: 1 June 2025", 
+            songUrl: "theringmaster.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Artificial Abandonment", 
+            rightTitle: "Description", 
+            rightText: "A song I made for a school project. I got 38/40. Written: 17 June 2025", 
+            songUrl: "artifabandon.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Fallacy", 
+            rightTitle: "Description", 
+            rightText: "A song I wrote after finding out that my friend got cheated on :) Written: 21 February 2026", 
+            songUrl: "fallacy.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "NO ETERNITY", 
+            rightTitle: "Description", 
+            rightText: "Nothing Will Ever Happen If We Stop Believing. Written: 13 August 2025", 
+            songUrl: "noeternity.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Memory Merge",
+            rightTitle: "Description", 
+            rightText: "A song about childhood traumas :) It was not fun to write. Written: 4 April 2025", 
+            songUrl: "memorymerge.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "NEVERLAND", 
+            rightTitle: "Description", 
+            rightText: "Let Gravity take us where it'll lead to. Written: 17 July 2024", 
+            songUrl: "neverland.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Parasocial", 
+            rightTitle: "Description", 
+            rightText: "This was written after I found out some people only used me for my songs. Written: 19 September 2025", 
+            songUrl: "parasocial.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Spider Bites", 
+            rightTitle: "Description", 
+            rightText: "A song about lust and physical touch lovers. Written: 11 November 2024", 
+            songUrl: "spiderbites.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "People Online", 
+            rightTitle: "Description", 
+            rightText: "A song about people who trashtalk everyone lmao Written: Sometime in 2023", 
+            songUrl: "peopleonline.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Sun Spots", 
+            rightTitle: "Description", 
+            rightText: "No one can hear you from up there btw. Written: 1 April 2023", 
+            songUrl: "sunspots.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Bullet In My Head", 
+            rightTitle: "Description", 
+            rightText: "A song about people who push others below them :) Written: Sometime in 2023", 
+            songUrl: "bulletinmyhead.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "You'll Be Gone", 
+            rightTitle: "Description", 
+            rightText: "A song about jealousy, people who create rumors and talks behind their snouts. Written: 17 December 2024", 
+            songUrl: "youllbegone.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Fratricide", 
+            rightTitle: "Description", 
+            rightText: "The only aftermath of betraying someone is totally getting stabbed to death. Written: Sometime in 2023", 
+            songUrl: "fratricide.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "False Idol", 
+            rightTitle: "Description", 
+            rightText: "A song about CULT OF THE LAMB. No, I am not The One Who Waits. Written: Sometime in 2023", 
+            songUrl: "falseidol.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Good Morning, Mr. Sunfish!", 
+            rightTitle: "Description", 
+            rightText: "A song about Sunfish, the greatest animal in the world. Written: 7 December 2025", 
+            songUrl: "sunfish.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Lost Valley - Overgrowth Series", 
+            rightTitle: "Description", 
+            rightText: "The start of my second comic. Only those who prevail shall fall Written: Sometime in 2023", 
+            songUrl: "lostvalley.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "#FLUTE - Overgrowth Series", 
+            rightTitle: "Description", 
+            rightText: "A song about flutes? Written: 19 April 2024", 
+            songUrl: "flute.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "GIZABYTE - Overgrowth Series", 
+            rightTitle: "Description", 
+            rightText: "And so the only path left is to descend into exile... Written: Sometime in 2023", 
+            songUrl: "gizabyte.mp3" 
+        },
+
+        { 
+            leftTitle: "Song Name", 
+            leftText: "Trash Talking", 
+            rightTitle: "Description", 
+            rightText: "A song about Cancel Culture...you know who you are. Written: Sometime in 2023", 
+            songUrl: "gizabyte.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "I - CHRONO; RE/ Series", 
+            rightTitle: "Description", 
+            rightText: "These songs are Piano REmakes of some of my favorite PHIgros songs. Arrangement: Sometime in 2022", 
+            songUrl: "i-chrono.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "II - MORPHEUS; RE/ Series", 
+            rightTitle: "Description", 
+            rightText: "I love piano. Arrangment: Sometime in 2022", 
+            songUrl: "ii-morpheus.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "III - PERSES; RE/ Series", 
+            rightTitle: "Description", 
+            rightText: "World Destruction. Arrangement: Sometime in 2022", 
+            songUrl: "iii-perses.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "IV - CHRONOSTASIS; RE/ Series", 
+            rightTitle: "Description", 
+            rightText: "One of my favorite songs to listen to, One of my least favorite songs to play. Arrangement: Sometime in 2022", 
+            songUrl: "iv-chronostasis.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "V - DOLOS; RE; Series", 
+            rightTitle: "Description", 
+            rightText: "A lot of trills were harmed in this arrangement. Arrangement: Sometime in 2022", 
+            songUrl: "v-dolos.mp3" 
+        },
+        { 
+            leftTitle: "Song Name", 
+            leftText: "VI - APOLLO; RE; Series", 
+            rightTitle: "Description", 
+            rightText: "Welcome to the Final Stretch :) We hope you've enjoyed your stay here. Good luck. Arrangement: Sometime in 2023", 
+            songUrl: "vi-apollo.mp3" 
+        },
+
+    ];
+
+    let currentIndex = 0;
+    let musicIndex = 0;
+
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) color += letters[Math.floor(Math.random() * 16)];
+        return color;
+    }
+
+    function randomizeUIText() {
+        const logo = document.getElementById('main-logo');
+        if(logo) logo.style.color = getRandomColor();
+        const links = document.querySelectorAll('.nav-links li a');
+        links.forEach(link => { if (!link.classList.contains('active')) link.style.color = getRandomColor(); });
+    }
+
+    function randomizeColors(containerSelector) {
+        const boxes = document.querySelectorAll(containerSelector + ' .content-box');
+        boxes.forEach(box => {
+            box.style.borderColor = getRandomColor();
+            box.style.backgroundColor = `rgb(${Math.random()*30}, ${Math.random()*30}, ${Math.random()*30})`;
+        });
+        const arrows = document.querySelectorAll(containerSelector + ' .nav-arrow');
+        arrows.forEach(arrow => {
+            arrow.style.color = getRandomColor();
+            arrow.style.borderColor = getRandomColor();
+        });
+    }
+
+    function createWordSoup() {
+        const container = document.getElementById('soup-container');
+        if(!container) return;
+        const words = ["yo", "hi", "help", "what", "cat", "pspsps", "why?", "???", "37", "57", "39"];
+        for (let i = 0; i < 15; i++) {
+            const wordElement = document.createElement('div');
+            wordElement.className = 'soup-item';
+            wordElement.innerText = words[Math.floor(Math.random() * words.length)];
+            wordElement.style.top = Math.random() * 80 + '%';
+            wordElement.style.left = Math.random() * 90 + '%';
+            wordElement.style.fontSize = Math.floor(Math.random() * 20 + 15) + 'px';
+            wordElement.style.transform = 'rotate(' + (Math.random() * 40 - 20) + 'deg)';
+            container.appendChild(wordElement);
+        }
+    }
+
+    function updateShowcase(index) {
+        const data = showcaseData[index];
+        document.getElementById('showcase-title-left').innerText = data.leftTitle;
+        document.getElementById('showcase-text-left').innerText = data.leftText;
+        document.getElementById('showcase-title-right').innerText = data.rightTitle;
+        document.getElementById('showcase-text-right').innerText = data.rightText;
+        document.getElementById('dynamic-img-2').src = data.url;
+        document.getElementById('counter').innerText = `${index + 1} / ${showcaseData.length}`;
+        randomizeColors('#showcase-section');
+    }
+
+    function updateMusicShowcase(index) {
+        const data = musicData[index];
+        document.getElementById('music-title-left').innerText = data.leftTitle;
+        document.getElementById('music-text-left').innerText = data.leftText;
+        document.getElementById('music-title-right').innerText = data.rightTitle;
+        document.getElementById('music-text-right').innerText = data.rightText;
+        
+
+        const player = document.getElementById('music-player');
+        player.src = data.songUrl;
+        player.load();
+        
+        document.getElementById('music-counter').innerText = `${index + 1} / ${musicData.length}`;
+        randomizeColors('#music-showcase-section');
+        
+        document.getElementById('music-frame').style.transform = `rotate(${Math.random() * 6 - 3}deg)`;
+    }
+
+    document.getElementById('prev-btn').addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? showcaseData.length - 1 : currentIndex - 1;
+        updateShowcase(currentIndex);
+    });
+    document.getElementById('next-btn').addEventListener('click', () => {
+        currentIndex = (currentIndex === showcaseData.length - 1) ? 0 : currentIndex + 1;
+        updateShowcase(currentIndex);
+    });
+
+    document.getElementById('music-prev-btn').addEventListener('click', () => {
+        musicIndex = (musicIndex === 0) ? musicData.length - 1 : musicIndex - 1;
+        updateMusicShowcase(musicIndex);
+    });
+    document.getElementById('music-next-btn').addEventListener('click', () => {
+        musicIndex = (musicIndex === musicData.length - 1) ? 0 : musicIndex + 1;
+        updateMusicShowcase(musicIndex);
+    });
+
+    createWordSoup();
+    randomizeUIText();
+    updateShowcase(0);
+    updateMusicShowcase(0);
+});
+</script>
+
+</body>
+</html>
