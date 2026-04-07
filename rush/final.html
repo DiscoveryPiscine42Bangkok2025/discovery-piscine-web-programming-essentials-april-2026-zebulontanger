@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Home</title>
+    <link rel="stylesheet" href="final.css">
+</head>
+<body>
+    <nav class="fabnav fade">
+        <div class="navbar" id="navbar">
+            <div class="navtrigger" onclick="toggleNav()">
+                <img src="https://cdn.imgchest.com/files/d405be82fa44.png" alt="Menu" id="nav-icon">
+            </div>
+            <div class="navmenu">
+                <div class="navitem"><a href="final.html">Home</a></div>
+                <div class="navitem dropdown">
+                    <a href="profile.html">Lamtan</a>
+                    <div class="dropdown-content">
+                        <a href="profile.html#card2" class="drop-item">Education</a>
+                        <a href="profile.html#card3" class="drop-item">Showcase</a>
+                        <a href="profile.html#card4" class="drop-item">Socials</a>
+                        <a href="profile.html#card5" class="drop-item">Other</a>
+                    </div>
+                </div>
+                <div class="navitem"><a href="baan.html">Baan</a></div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="mainheader fade">
+        <h1 class="pagetitle">Home</h1>
+    </header>
+
+    <div class="image-container">
+        <div class="profile-group fade" id="profile-Lamtan">
+            <figure class="profile-trigger">
+                <img src="https://cdn.imgchest.com/files/5b95f8070fc9.jpg" alt="Lamtan">
+                <h2>Lamtan's Profile</h2>
+            </figure>
+            <div class="about-card">
+                <h3>About</h3>
+                <h1>Lamtan</h1>
+                <p>Discord Community Manager,<br>Loves Siberian Huskies and Sea Lions</p>
+                <a href="lamtan.html" class="see-more-btn">See More</a>
+            </div>
+        </div>
+
+        <div class="profile-group fade" id="profile-Baan">
+            <figure class="profile-trigger">
+                <img src="https://cdn.imgchest.com/files/ab4ec5774329.webp" alt="Baan">
+                <h2>Baan's Profile</h2>
+            </figure>
+            <div class="about-card">
+                <h3>About</h3>
+                <h1>Baan</h1>
+                <p>Music Composer, Song Writer<br>Loves Cats, Sunfish and Bees</p>
+                <a href="baan.html" class="see-more-btn">See More</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg">
+        <video autoplay loop muted playsinline class="bgvideo">
+            <source src="https://cdn.imgchest.com/files/8a9d99577d63.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+    </div>
+
+    <script src="final.js"></script>
+</body>
+</html>
